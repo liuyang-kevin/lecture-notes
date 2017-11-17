@@ -1,0 +1,21 @@
+{
+  "name": "node-spider",
+  "version": "1.0.0",
+  "description": "抓取网络数据",
+  "main": "index.js",
+  "scripts": {
+    "test": "node spider_test_reg.js",
+    "grab_website": "node spider_grab_website.js",
+    "js_answers": "node spider_js_answers.js"
+  },
+  "keywords": [
+    "spider"
+  ],
+  "author": "kevin liu",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.83.0",
+    "socks5-https-client": "^1.2.1"
+  }
+}
