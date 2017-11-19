@@ -12,3 +12,9 @@ I use Webstrom IDE wrote it; some links could jump into file;
 
 ## ./node-spider
 node的爬虫，抓取了一些js学习网站的习题；后续完善中
+
+## ./node-simple_server
+[简单server,理解get、post请求](./node-simple_server/Readme.md)
+> Simple Server, use it to understand GET And POST Method
+
+## to be continue...
