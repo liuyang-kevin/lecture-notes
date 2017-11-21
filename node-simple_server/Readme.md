@@ -20,6 +20,12 @@
 4. write simple server, output `html file`
     1. [simple_server2.js](./simple_server2.js)
     2. run it `node simple_server2.js`
-5. deploy `simple server` to VPS; learn & understand how it work;
-6. write `post & get method`
-    1. search `node http post`
+    3. it has some bugs, like when it get `/\` can't default turn to `index.html`
+5. Deploy `simple server` to VPS; learn & understand how it work;
+6. Write `post & get method`
+    1. Search `node http post` on the search engine;
+    2. Very simple example at [get_and_post.js](./get_and_post.js), it can print request Head and Method
+    3. Download some software `Http test tool` like [Postman](https://www.getpostman.com/).
+    4. Test different `HTTP Method` How it's work
+7. Write A Project to handle `Get` and `Post` Request.
+    1. You can make it work with [H5-a single login page](../H5-a_single_login_page/Readme.md)

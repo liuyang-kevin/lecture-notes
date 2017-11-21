@@ -29,12 +29,46 @@ var server = http.createServer(function(req, res) {
     res.end('<h1>Hello world!</h1>');
 });
 
+
 // server 从这开始了
 // https://nodejs.org/dist/latest-v8.x/docs/api/net.html#net_server_listen_port_host_backlog_callback
 server.listen(port, hostname, function() {
     // hostname是const类型时，可以用以下写法
     //console.log('Server running at http://${hostname}:${port}/');
+    //console.log('Server running at http://' + hostname + ':' + port + '/');
 
     console.log('Server running at http://%s:%s', hostname, port);
-    // console.log('Server running at http://' + hostname + ':' + port + '/');
 });
+
+
+
+
+
+// in other file
+// metaphor 1: <meta>
+// server.
+// function listen(端口, 主机名, callback) {
+//     // do labour
+//     var i = 0;
+//     i++;
+//     i++;
+//     i++;
+//     // end labour
+//     var oneThround = callback();
+//
+//     while (oneThround != 0){
+//         //do something;
+//         oneThround--;
+//     }
+//
+//     return 123;
+// }
+
+// metaphor 2:
+// console.
+// function log(willLogStr, ...args){
+//
+// }
+
+
+
