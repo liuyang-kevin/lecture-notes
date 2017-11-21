@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>1. Using the width Property</h1>
+<!-- always fill its parents -->
+<img src="../res/flowers.jpg" style="width:100%;">
+
+<hr/>
+<h1>2. Using the max-width Property</h1>
+<!-- never scale up to be larger than its original size -->
+<img src="../res/flowers.jpg" style="max-width:100%;height:auto;">
+
+<hr/>
+<h1>3. Show Different Images Depending on Browser Width</h1>
+<h2><strong>I think it is best way;, But you need do more work.</strong></h2>
+
+<!--The HTML <picture> element allows you to define different images for different browser window sizes.-->
+<picture>
+    <source srcset="../res/img_smallflower.jpg" media="(max-width: 600px)">
+    <source srcset="../res/img_flowers.jpg" media="(max-width: 1500px)">
+    <source srcset="../res/flowers.jpg">
+    <img src="../res/img_smallflower.jpg" alt="Flowers">
+</picture>
+
+<!-- <picture>标签用法和HTML5的<video>类似：-->
+<!-- 通过媒体查询的方式，根据页面宽度（当然也可以添加其他参考项）加载不同图片。这样不仅节省带宽还能使得图片更加适配内容。-->
+<!-- 有些在大屏里看着比较舒服的图片，在手机上看会觉得太小，里边的东西看不清；-->
+<!-- 即使手机分辨率是1920×1080，PC和手机上的图片宽度都是1000，显示的效果也应该不一样，手机上的图片应当更加注重放大细节。-->
+
+
+<hr/>
+<h1>&lt;picture&gt;;标签，如果不被浏览器支持，想使用，要么用&lt;span&gt;配合媒体查询模拟这个效果，要么用javascript动态返回图片。</h1>
+
+
+<script>
+    // github上的picturefill项目，就是通过加载HTML时，
+    // https://github.com/scottjehl/picturefill
+    // 异步加载picturefill.js解析<picture>标签，然后再获取标签中的图片。
+    // 因为需要和解析HTML这个过程异步执行，所以在使用<picture>之前，应当在<head>里引用picturefill.js。
+    // 通过HTML5 shiv方式让IE识别<picture>标签
+    document.createElement("picture");
+</script>
+<script src="../res/picturefill.min.js" async> //添加async属性
+// 然后就可以想最初提到的和<video>方式使用<picture>标签，另外，picturefill.js可以支持IE9，但是得在<source>外裹一层<video>标签：
+//这样就可以利用媒体查询加载不同图片了，详细内容可以参考Picturefill的网站。
+//但是这个方法也引用了外部js文件，需要多请求一次资源，文件大小19KB左右，在使用时注意权衡。
+</script>
+
+
+<picture>
+    <!--[if IE 9]><video style="display:none;"><![endif]-->
+    <source srcset="../res/large.jpg" media="(min-width: 800px)">
+    <!--<source srcset="medium.jpg" media="(min-width: 600px)">-->
+    <!--[if IE 9]></video><![endif]-->
+    <img srcset="../res/small.jpg" alt="响应式图片">
+</picture>
+
+
+</body>
+</html>

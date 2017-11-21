@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .left {
+        background-color: #2196F3;
+        padding: 20px;
+        float: left;
+        width: 20%; /*The width is 20%, by default*/
+    }
+
+    .main {
+        background-color: #f1f1f1;
+        padding: 20px;
+        float: left;
+        width: 60%; /*The width is 60%, by default*/
+    }
+
+    .right {
+        background-color: #4CAF50;
+        padding: 20px;
+        float: left;
+        width: 20%; /*The width is 20%, by default*/
+    }
+
+    /*Use a media query to add a break point at 800px:*/
+    @media (max-width: 800px) {
+        .left, .main, .right {
+            width: 100%; /*The width is 100%, when the viewport is 800px or smaller*/
+        }
+    }
+
+    .main.notice{
+        color: #FF6600;
+    }
+    code { color:red; font-size:14px; font-weight:bold; }
+    /*.code{*/
+        /*width: 100%;*/
+        /*height: 50px;*/
+    /*}*/
+</style>
+
+<body>
+
+<div class="left">
+    Left Menu<br><br><br><br>
+</div>
+<div class="main">
+    Main Content<br><br><br><br>
+</div>
+<div class="right">
+    Right Content<br><br><br><br>
+</div>
+
+
+<p>Resize the browser window.</p>
+
+<p>Make sure you reach the breakpoint at 800px when resizing this frame.</p>
+
+
+<p>Media Queries直译过来就是“媒体查询”</p>
+<p>在HTML4和CSS2中充许你使用“media”来指定特定的媒体类型，如屏幕（screen）和打印（print）的样式表</p>
+<p class="main notice">“在CSS3中我们可以设置不同类型的媒体条件，并根据对应的条件，给相应符合条件的媒体调用相对应的样式表”。</p>
+
+
+<p class="main">
+    <code> &lt;link rel="stylesheet" media="screen and (max-width: 600px)" href="small.css" /&gt;</code>
+    <!--注意 code 标签的问题， code里用html标签，不出效果，不显示任何东西-->
+    <!-- NOTICE: -->
+    <!-- tag code has problem on html files-->
+    <!--Unfortunately it doesn't work with HTML tags.-->
+    <!--If you want to render a < character then use &lt;, with &gt; for > and &amp; for &.-->
+
+</p>
+<p class="main">
+
+    上面的media语句表示的是：当页页宽度小于或等于600px,调用small.css样式表来渲染你的Web页面。首先来看media的语句中包含的内容：<br/>
+
+    1、screen：这个不用说大家都知道，指的是一种媒体类型；<br/>
+    2、and：被称为关键词，与其相似的还有not,only，稍后会介绍；<br/>
+    3、（max-width:600px）：这个就是媒体特性，说得通俗一点就是媒体条件<br/>
+</p>
+
+
+<!-- clear float legacy -->
+<div style="clear: both"></div>
+
+
+<div class="left">
+    Left Menu<br><br><br><br>
+</div>
+<div class="main">
+    媒体类型(Media Type)<br/>
+    css2中我们常碰到的就是 all（全部）,screen（屏幕）,print（页面打印或打邱预览模式）,其实在媒体类型不止这三种，w3c总共列出了10种媒体类型。<br/>
+</div>
+<div class="right">
+    Right Content<br><br><br><br>
+</div>
+
+
+
+<div class="left">
+    Left Menu<br><br><br><br>
+</div>
+<div class="main">
+    媒体特性（Media Query)<br/>
+    Media Query是CSS3 对Media Type的增强版，其实可以将Media Query看成Media Type(判断条件)+CSS(符合条件的样式规则)，常用的特性w3c共列出来13种。<br/>
+</div>
+<div class="right">
+    <a href="more_4_media_query.html">更详细内容在这</a>
+</div>
+
+
+</body>
+</html>
