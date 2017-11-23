@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo LESS</title>
+    <!-- 注意， rel的值， 是less，不是css-->
+    <!-- NOTICE:!! rel="stylesheet/less" -->
+    <link rel="stylesheet/less" type="text/css" href="./styles.less">
+
+    <!-- 加载完了less样式文件，在引入less.js才有效 -->
+    <!-- Use less.js need after less files loaded -->
+    <script src="./dist/less.js" type="text/javascript"></script>
+
+    <!-- 需要服务器加载 html 页面才起效，file:/// 不行-->
+    <!-- NOTICE:!! Use less.js need server load html page; -->
+</head>
+<body>
+
+<div class="paper">test content</div>
+
+</body>
+</html>
