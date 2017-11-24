@@ -1,16 +1,84 @@
+// color -> icon & text
+@C0311: #59c5ff;  @C0311p: #35aae1;
+@C0312: #f2a437;  @C0312P: #d38a17;
+@C0313: #ff3657;  @C0313p: #e10041;
+@C0314: #fff100;  @C0314p: #d4c606;
+@C0315: #44cf89;  @C0315p: #009957;
+@C0316: #4a156e;  @C0316p: #2e0054;
+@C0317: #7e46a2;  @C0317p: #4a156e;
+@C0318: #d193f7;  @C0318p: #b479da;
+@C0319: #ff5b4c;
+
+
+// no color -> icon & text
+@C0321: #1a1a1a;
+@C0322: #666666;  @C0322p: #373737;
+@C0323: #999999;  @C0323p: #666666;
+@C0324: #ffffff;  @C0324p: #e2e2e2;
+
+// no color -> background and section line;
+@C0331: #bfbfbf;
+@C0332: #e6e6e6;
+@C0333: #f2f2f2;  @C0333p: #a3a3a3;
+
+
+
+
 @nice-blue: #5B83AD;
 @light-blue: @nice-blue + #111;
 
 
-@C0322: #666666;
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
 
-@C0333: #f2f2f2;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          14px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//** By default, this inherits from the `<body>`.
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+//== divider
+@paper-divider: @line-height-computed/4;
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 #header {
   color: @light-blue;
+}
+.tile {
+
 }
 
 .paper {
   background-color: @C0333;
   color: @C0322;
+  margin: @paper-divider;
+  border-radius: 2px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }

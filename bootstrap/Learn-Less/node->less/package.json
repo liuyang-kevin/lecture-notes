@@ -1,0 +1,13 @@
+{
+  "name": "node-compiler-less",
+  "version": "1.0.0",
+  "description": "node compiler less",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "kevin liu",
+  "license": "ISC"
+}
