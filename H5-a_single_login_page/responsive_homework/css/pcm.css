@@ -1,0 +1,5 @@
+@import url(./default.css);
+
+.wall-paper {
+    background-image: url("../../res/img_smallflower.jpg");
+}

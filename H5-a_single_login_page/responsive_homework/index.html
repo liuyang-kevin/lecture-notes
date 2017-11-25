@@ -3,8 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- 1. develop mob & desktop version -->
+    <!-- 2. prepare css default.css\mob.css\pcm.css\etc. -->
+    <!-- 3. default.css define base value for page; use media query make up other css-->
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="./css/mob.css" />
+    <link rel="stylesheet" media="screen and (min-width: 768px)" href="./css/pcm.css" />
+    <link rel="stylesheet" media="screen and (min-width: 992px)" href="./css/pcl.css" />
+
+    <!-- The screen size were defined by bootstrap-->
+    <!--/* 超小屏幕（手机，小于 768px） */-->
+    <!--/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */-->
+
+    <!--/* 小屏幕（平板，大于等于 768px） */-->
+    <!--@media (min-width: @screen-sm-min) { ... }-->
+
+    <!--/* 中等屏幕（桌面显示器，大于等于 992px） */-->
+    <!--@media (min-width: @screen-md-min) { ... }-->
+
+    <!--/* 大屏幕（大桌面显示器，大于等于 1200px） */-->
+    <!--@media (min-width: @screen-lg-min) { ... }-->
+
 </head>
 <body>
+
+<div class="magic-paper main-foundation">
+    <div class="wall-paper">
+
+        <!--<picture>-->
+            <!--<source srcset="../res/img_smallflower.jpg" media="(max-width: 600px)">-->
+            <!--<source srcset="../res/img_flowers.jpg" media="(max-width: 1500px)">-->
+            <!--<source srcset="../res/flowers.jpg">-->
+            <!--<img src="../res/img_smallflower.jpg" alt="Flowers">-->
+        <!--</picture>-->
+
+        <!--<img class="image-blur" src="../res/flowers.jpg"/>-->
+        <div class="image-mask">fadfasfdasdfasdfas</div>
+    </div>
+
+</div>
 
 </body>
 </html>
