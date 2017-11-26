@@ -5,9 +5,13 @@ http.createServer(function(req,res){
     //console.log(req.socket);
     console.log(req.headers);
     console.log(req.method);
+    console.log(req.body);
     res.writeHead(404,{'Content-Type':'text/plain'})
     res.write("we are is content");
     res.end("fdsa");
+
+
+
 }).listen(8080);
 
 //
