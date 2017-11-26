@@ -39,11 +39,11 @@
         <div id="input-group" class="input-group">
             <div class="editText">
                 <span>用户名</span>
-                <input name="username" value="">
+                <input id="inputUsername" name="username" value="">
             </div>
             <div class="editText">
                 <span>密码</span>
-                <input name="password" type="password" value="">
+                <input id="inputPassword" name="password" type="password" value="">
             </div>
 
             <div style="clear: both;"></div>
@@ -78,11 +78,16 @@
     }
     function change(url){//接受请求响应的URL
         creatXMLHttpRequest();
-        xmlrequest.open("POET",url,true);//连接服务器
+        xmlrequest.open("POST",url,true);//连接服务器
         xmlrequest.setRequestHeader("content-Type","applicaion/x-www-form-urlencoded");
         //设置请求头编码方式
         xmlrequest.onreadystatechange = processResponse;
-        xmlrequest.send(null);  //发送请求
+
+        var username = window.document.getElementById("inputUsername");
+        var pw = window.document.getElementById("inputPassword");
+        console.log("xmlhttp: "+username.value);
+
+        xmlrequest.send("fasdfasd"+username.value+pw.value);  //发送请求
     }
     //定义处理响应的回调函数
     function processResponse(){
@@ -107,9 +112,7 @@
 
     button.onclick = function () {
         console.log("submitButton onclick");
-
-
-        change();
+        var res =  change("http://127.0.0.1:8080/simple_server2/");
     };
 
 
