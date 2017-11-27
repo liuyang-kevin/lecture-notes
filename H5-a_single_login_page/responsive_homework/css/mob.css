@@ -10,10 +10,7 @@
 }
 
 .input-group{
-
-    height: 300px;
-    width: 200px;
-    /*background: #dddddd;*/
-
-    /*position: relative;*/
+    margin: auto;
+    width: 25%;
+    text-align: center;
 }

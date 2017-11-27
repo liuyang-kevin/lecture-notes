@@ -9,7 +9,11 @@ var util = require('util');
 
 var mine = require('./mine').types;
 var PORT = 8080;       //端口
-var DIR = 'test1';     //用于存放html的目录
+// var DIR = 'test1';     //用于存放html的目录
+var DIR = '../H5-a_single_login_page/responsive_homework';
+
+
+
 
 var server = http.createServer(function (request, response) {
     var pathname = url.parse(request.url).pathname;
