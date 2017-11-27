@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax update Get or Post</title>
+
+    <style>
+        .main-foundation {
+            top:0;
+            bottom:0;
+            left: 0;
+            right: 0;
+            position: absolute;
+        }
+
+        .wall-paper {
+            width: 100%;
+            height: 100%;
+        }
+        .image-mask{
+            margin-top: -100%;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .editText{
+            margin: 15px;
+            text-align: center;
+            /* border: 2px solid #a1a1a1; */
+            padding: 10px 40px;
+            background: #dddddd66;
+            width: 350px;
+            height: 50px;
+            border-radius: 25px;
+            float: left;
+        }
+
+        .editText > span{
+            float: left;
+        }
+        .editText > input{
+            float: left;
+        }
+
+        .buttonCommint{
+            margin: 15px;
+            text-align: center;
+            /* border: 2px solid #a1a1a1; */
+            padding: 10px 40px;
+            background: #FF9800;
+            width: 350px;
+            height: 50px;
+            border-radius: 25px;
+            float: left;
+        }
+
+        .buttonCommint > span{
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="magic-paper main-foundation">
+    <div class="wall-paper">
+        <div id="input-group" class="input-group">
+            <div class="editText">
+                <span>用户名</span>
+                <input id="inputUsername" name="username" value="">
+            </div>
+            <div class="editText">
+                <span>密码</span>
+                <input id="inputPassword" name="password" type="password" value="">
+            </div>
+
+            <div style="clear: both;"></div>
+
+            <div id="submitButton" class="buttonCommint">
+                <span style="text-shadow: #0D3349">Get Started</span>
+            </div>
+        </div>
+
+        <div id="response_header">还真么都没有</div>
+    </div>
+
+
+</div>
+
+
+
+<script>
+    //----------------------------------------------------------------------------------------------------------------
+    var xmlrequest;
+    //----------------------------------------------------------------------------------------------------------------
+    //完成XMLHttpRequest初始化
+    function creatXMLHttpRequest(){
+        if(window.XMLHttpRequest){ //判定兼容性
+            xmlrequest= new XMLHttpRequest(); //Dom2浏览器
+        }
+        else if(window.ActiveXObject){  //IE浏览器
+            try{
+                xmlrequest= new ActiveXObject("msxml2.XMLHTTP");
+            }catch(e){
+                try{
+                    xmlrequest= new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e){}
+            }
+        }
+    }
+    //----------------------------------------------------------------------------------------------------------------
+    //接受请求响应的URL
+    function change(url){
+        creatXMLHttpRequest();
+        xmlrequest.open("GET",url,true);
+//        xmlrequest.open("POST",url,true);  //连接服务器， Post，Get 这里切换；
+        xmlrequest.setRequestHeader("content-Type","applicaion/x-www-form-urlencoded"); //设置请求头编码方式
+
+        xmlrequest.onreadystatechange = processResponse; //当server返回数据，处理使用的回调
+
+        var dom_div_username = window.document.getElementById("inputUsername");
+        var dom_div_password = window.document.getElementById("inputPassword");
+        console.log("dom_div_username value: "+dom_div_username.value);
+        console.log("dom_div_password value: "+dom_div_password.value);
+
+        xmlrequest.send("普通提交:用户名->"+dom_div_username.value+"|密码->"+dom_div_password.value);  //发送请求，普通发送；
+    }
+    //----------------------------------------------------------------------------------------------------------------
+    //定义处理响应的回调函数
+    function processResponse(){
+        console.log("响应的回调了");
+        if(xmlrequest.readyState === 4){
+            if(xmlrequest.status ===200){  //请求成功
+                var headers = xmlrequest.getAllResponseHeaders();
+                alert("响应头类型"+typeof headers+"\n"+headers);
+                document.getElementById('response_header').innerHTML = headers;   //请求成功后要做的事情
+            }
+            else{
+                window.alert("请求页面有异常");
+            }
+        }
+    }
+
+
+
+
+
+
+    var button = window.document.getElementById("submitButton");
+
+    button.onclick = function () {
+        console.log("submitButton onclick");
+        var res =  change("http://127.0.0.1:8080/simple_server2_handle_ajax/");
+    };
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

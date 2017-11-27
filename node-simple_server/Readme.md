@@ -29,3 +29,11 @@
     4. Test different `HTTP Method` How it's work
 7. Write A Project to handle `Get` and `Post` Request.
     1. You can make it work with [H5-a single login page](../H5-a_single_login_page/Readme.md)
+    
+    
+## 更新 2017-11-27
+### 数据提交
+1. 文件夹`test1`中，新增  
+[Web1.0方式，表单提交GET，POST请求](./test1/web1_form_action.html)  
+[Web2.0方式，原生JS提交GET，POST请求](./test1/web2_form_action.html)
+2. [simple_server2.js](./simple_server2.js) 添加了log日志，易于访问
