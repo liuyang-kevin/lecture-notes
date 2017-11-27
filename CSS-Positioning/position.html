@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Positioning</title>
+    <style>
+        .shape-square{
+            width: 75px;
+            height: 75px;
+            overflow: scroll;
+        }
+
+        .color-red {
+            background-color: red;
+        }
+
+        .color-gold {
+            background-color: gold;
+        }
+
+        .color-aquamarine {
+            background-color: aquamarine;
+        }
+
+        .color-blueviolet {
+            background-color: blueviolet;
+        }
+
+        .color-cyan {
+            background-color: cyan;
+        }
+
+        .color-deeppink {
+            background-color: deeppink;
+        }
+
+        .color-seashell {
+            background-color: seashell;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="shape-square color-seashell" style="position: fixed;bottom: 30px;right: 30px">我固定在窗口的某个位置</div>
+
+<div class="shape-square color-aquamarine" style="position: absolute; bottom: 30px;left: 30px;">我是绝对定位，看起来像fixed属性，因为我在&lt;body&gt;里;</div>
+
+<div class="shape-square color-gold" style="position: absolute; bottom: 30px;left: 30px;">我是绝对定位，看起来像fixed属性，因为我在&lt;body&gt;里;</div>
+
+
+</body>
+</html>
