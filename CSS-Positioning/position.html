@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <title>Positioning</title>
     <style>
+        body{
+            /*自带margin 影响定位*/
+            margin: 0;
+        }
+        ul{
+            /*自带margin 影响定位*/
+            margin: 0;
+        }
+        p{
+            /*自带上下margin 16 影响定位*/
+            margin: 0;
+        }
         .shape-square{
             width: 75px;
             height: 75px;
             overflow: scroll;
+
+
+            /* 注意，行模式，absolute模式下，测试效果，需要行；否则会脱离内容流 */
+            display: inline;
         }
 
         .color-red {
@@ -42,12 +58,90 @@
 
 </head>
 <body>
-<div class="shape-square color-seashell" style="position: fixed;bottom: 30px;right: 30px">我固定在窗口的某个位置</div>
+<!--<div style="width: 100%;height: 100%; background-color: plum;position: fixed">0. fixed; w,h 100%; 作为底层，可以铺满全屏 </div>-->
+<div>
+    fixed:固定定位<br>
+    absolute:绝对定位<br>
 
-<div class="shape-square color-aquamarine" style="position: absolute; bottom: 30px;left: 30px;">我是绝对定位，看起来像fixed属性，因为我在&lt;body&gt;里;</div>
+    区别很简单：<br>
+    1、没有滚动条的情况下没有差异<br>
+    2、在有滚动条的情况下，fixed定位不会随滚动条移动而移动，而absolute则会随滚动条移动</div>
 
-<div class="shape-square color-gold" style="position: absolute; bottom: 30px;left: 30px;">我是绝对定位，看起来像fixed属性，因为我在&lt;body&gt;里;</div>
 
+<div class="shape-square color-seashell" style="position: fixed;bottom: 30px;right: 30px">1. fixed定位, 我固定在窗口的某个位置</div>
+
+<div class="shape-square color-aquamarine" style="position: absolute; bottom: 30px;left: 30px;">2. 我是绝对定位，看起来像fixed属性，因为我在&lt;body&gt;里;</div>
+
+<div class="shape-square color-cyan" style="position: absolute; bottom: 150px;left: 150px;">3. 没有 z-index;</div>
+<div class="shape-square color-gold" style="position: absolute; bottom: 135px;left: 135px;">4. 没有 z-index;</div>
+<div class="shape-square color-blueviolet" style="position: absolute; bottom: 120px;left: 120px;">5. 没有 z-index;</div>
+
+
+<div class="shape-square color-cyan" style="position: absolute; bottom: 150px;left: 250px;z-index: 0;">3. z-index = 0;</div>
+<div class="shape-square color-gold" style="position: absolute; bottom: 135px;left: 235px;z-index: -1;">4. z-index = -1;</div>
+<div class="shape-square color-blueviolet" style="position: absolute; bottom: 120px;left: 220px;z-index: 999;">5. z-index = 999;</div>
+
+
+
+<div style="margin: auto; width: 75%; background-color: navajowhite;">
+    6. 水平居中,
+    <ul>
+        <li>解开 注释 div0</li>
+        <li>0层，用fixed全屏后，会遮挡</li>
+        <li>z-index: 22; 不能使其可见</li>
+        <li>position: fixed; 可以使z-index起效,但是margin失效，水平居中则失效;</li>
+        <li>注释 div0 继续</li>
+    </ul>
+</div>
+
+
+<div style="margin: auto; width: 75%; height: 700px; background-color: lavender;">
+    7. 水平居中, 作为容器，(结果在div6 下，可以理解为，一般换行；)
+    <div style="margin: 45px">
+        7.3 加入了一定外边框便于查看
+        <p style="border:4px solid blue;">7.3.1 </p>
+        <p style="border:4px solid red;position: absolute;">7.3.2 一旦给元素加上absolute或float就相当于给元素加上了display:block;</p>
+        <p style="border:4px solid blue;">_________________________________________________________________这里有一行&lt;p&gt;7.3.3,但是他在7.3.1的换行后头</p>
+        <p style="border:4px solid blue;">第2行的p标签，因为absolute改变了 display属性值到 block</p>
+    </div>
+
+    <div style="border:4px solid blue;">
+        <p style="background-color: darkgoldenrod;">7.1</p>
+        <img src="img/cat.png" />
+    </div>
+    <div style="border:4px solid red;">
+        我是一个绝对定位的absolute元素|这只猫--&gt; <img style=" position: absolute;" src="img/cat.png" />未指定left/top/right/bottom的absolute元素，其在所处层级中的定位点就是正常文档流中该元素的定位点。(左上角)
+    </div>
+    <div>没用的div，为了撑大</div>
+    <div>没用的div，为了撑大</div>
+    <div>没用的div，为了撑大</div>
+    <div>没用的div，为了撑大</div>
+
+    <div style="border:4px solid red;">
+        7.4 left|right 偏移，以指定边为定位点，偏移设置大小，top仍然依赖文档
+        <div class="shape-square color-cyan" style="position: absolute; left: 10px;">7.4.1 left:10px</div>
+        <div class="shape-square color-cyan" style="position: absolute; right: 10px;">7.4.2 right:10px</div>
+
+        <div class="shape-square color-cyan" style="position: absolute; top: 200px;">7.4.3 top:200px</div>
+
+
+        ___________如果取消class shape-square 中的display:inline; 就看不出效果
+        <!--<img style="position: absolute; left: 10px;" src="img/cat.png" />-->
+        <!--<img style="position: absolute; right: 10px;" src="img/cat.png" />-->
+        <!--<img style="position: absolute; top: 20px;" src="img/cat.png" />-->
+    </div>
+
+
+
+    <div class="shape-square color-aquamarine" style="position: fixed; bottom: 30px;right: 175px;">7.1. fixed定位, 脱离了div7 的控制</div>
+
+    <div class="shape-square color-cyan" style="position: absolute; ">7.2. absolute定位,</div>
+</div>
+<div style="margin: auto; width: 75%; background-color: khaki;position: relative; left: -30px;">
+    8. 水平居中,<br>
+    position: relative; left: -30px;<br>
+    根据其自身偏移；
+</div>
 
 </body>
 </html>
