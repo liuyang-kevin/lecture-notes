@@ -7,13 +7,13 @@
 
 ## 网格术语
 1. 网格线(Grid Lines)  
-![](./res/css-grid-layout-1.jpg)  
+![](../res/css-grid-layout-1.jpg)  
 2. 网格轨道(Grid Track)  
-![](./res/css-grid-layout-2.jpg)  
+![](../res/css-grid-layout-2.jpg)  
 3. 网格单元格(Grid Cell)  
-![](./res/css-grid-layout-3.jpg)  
+![](../res/css-grid-layout-3.jpg)  
 4. 网格区域(Grid Area)  
-![](./res/css-grid-layout-4.jpg)  
+![](../res/css-grid-layout-4.jpg)  
 5. 网格容器(Grid Containers)  
 > 通过使用display属性给元素显式设置了属性值grid或inline-grid  
 6. 网格单元格顺序(order)  
@@ -35,7 +35,7 @@
 </div>
 ```
 * 使用 2:  
-![](./res/css-grid-layout-example-2.jpg)
+![](../res/css-grid-layout-example-2.jpg)
 ```css
 /*按网格线切*/
 .sliceByLine{ 
