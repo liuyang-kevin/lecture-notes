@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        #page {
+            display: grid;
+            width: 100%;
+            height: 100px;
+
+
+            /* 利用fixed 充满全屏*/
+            /*position: fixed;*/
+            /*height: 100%;*/
+            /*top:0;*/
+            /*bottom: 0;*/
+
+            grid-template-areas: "head head"
+            "nav  main"
+            "foot ....";
+            grid-template-rows: 50px 1fr 30px;
+            grid-template-columns: 150px 1fr;
+        }
+
+        #page > header {
+            grid-area: head;
+            background-color: #8ca0ff;
+        }
+
+        #page > nav {
+            grid-area: nav;
+            background-color: #ffa08c;
+        }
+
+        #page > main {
+            grid-area: main;
+            background-color: #ffff64;
+        }
+
+        #page > footer {
+            grid-area: foot;
+            background-color: #8cffa0;
+        }
+    </style>
+
+</head>
+<body>
+<section id="page">
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>
+        上述代码通过 grid-template-areas 定义了一个3行2列的弹性布局：<br>
+        1. 相邻的2个head字符串，将生成一个名为head的网格区域，跨越2列；<br>
+        2. nav、main和foot字符串分别生成与其同名的3个网格区域；<br>
+        3. 4个点（....）连线生成一个空网格区域。<br>
+
+
+        <h3>CSS fr单位 剩余空间分配数</h3>
+        <p>fr单位被用于在一系列长度值中分配剩余空间，如果多个已指定了多个部分，则剩下的空间根据各自的数字按比例分配。</p>
+
+    </main>
+    <footer>Footer</footer>
+</section>
+</body>
+</html>

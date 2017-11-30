@@ -1,5 +1,5 @@
 #CSS 定位 (Positioning) 属性允许你对元素进行定位。
-[原文](http://www.w3school.com.cn/css/css_positioning.asp)
+[原文](http://www.w3school.com.cn/css/css_positioning.asp)  
 [其他参考](https://www.cnblogs.com/theWayToAce/p/5264436.html)
 ## CSS 定位和浮动
 > CSS 为定位和浮动提供了一些属性，利用这些属性，可以建立列式布局，将布局的一部分与另一部分重叠，还可以完成多年来通常需要使用多个表格才能完成的任务。
