@@ -4,122 +4,80 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- 1. develop mob & desktop version -->
-    <!-- 2. prepare css default.css\mob.css\pcm.css\etc. -->
+    <!-- 2. prepare css default.css\styles.css\etc. -->
     <!-- 3. default.css define base value for page; use media query make up other css-->
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/mob.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <!--***************************************************-->
+    <!-- 也可以分开写成不同的css、使用media 分别加载 3 个css文件  -->
     <!--<link rel="stylesheet" media="screen and (max-width: 768px)" href="./css/mob.css" />-->
     <!--<link rel="stylesheet" media="screen and (min-width: 768px)" href="./css/pcm.css" />-->
     <!--<link rel="stylesheet" media="screen and (min-width: 992px)" href="./css/pcl.css" />-->
 
-    <!-- The screen size were defined by bootstrap-->
-    <!--/* 超小屏幕（手机，小于 768px） */-->
-    <!--/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */-->
 
-    <!--/* 小屏幕（平板，大于等于 768px） */-->
-    <!--@media (min-width: @screen-sm-min) { ... }-->
+    <style>
+        body{
+            height: 100%;
+            /*本条禁止body滚动，页面边缘就无法拖动了*/
+            overflow: hidden;
+        }
+        .wall-paper {
+            position: fixed;
+            bottom: 0;
+            top:0;
+            left: 0;
+            right: 0;
+            z-index: -999;
+            /*background-image: url("../res/img_flowers.jpg");*/
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        .blur {
+            -webkit-filter: blur(10px); /* Chrome, Opera */
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+        }
 
-    <!--/* 中等屏幕（桌面显示器，大于等于 992px） */-->
-    <!--@media (min-width: @screen-md-min) { ... }-->
+        .logo-group{
 
-    <!--/* 大屏幕（大桌面显示器，大于等于 1200px） */-->
-    <!--@media (min-width: @screen-lg-min) { ... }-->
+        }
+
+        
+
+    </style>
+
+
 
 </head>
 <body>
-
-
-
-<!-- 4. add div container-->
-<!-- 定义一个铺满全屏的div 透过css的 fixed，上下左右0解决-->
-<!-- 我写在了 main-foundation中-->
-<div class="magic-paper main-foundation">
-    <div class="wall-paper">
-        <div id="input-group" class="input-group">
-            <div class="editText">
-                <span>用户名</span>
-                <input id="inputUsername" name="username" value="">
-            </div>
-            <div class="editText">
-                <span>密码</span>
-                <input id="inputPassword" name="password" type="password" value="">
-            </div>
-
-            <div style="clear: both;"></div>
-
-            <div id="submitButton" class="buttonCommint">
-                <span style="text-shadow: #0D3349">Get Started</span>
-            </div>
-        </div>
+<!-- 背景 -->
+<div class="wall-paper blur"></div>
+<!-- UI layer -->
+<div class="magic-paper">
+    <div id="logo-container" class="logo-group">
+        <img src="./res/sea-waves-variant.svg" />
     </div>
 
 
-    <!--&lt;!&ndash;<img class="image-blur" src="../res/flowers.jpg"/>&ndash;&gt;-->
-    <!--<div class="image-mask">fadfasfdasdfasdfas</div>-->
+    <div id="input-group" class="input-group">
+        <div class="editText">
+            <span>用户名</span>
+            <input id="inputUsername" name="username" value="">
+        </div>
+        <div class="editText">
+            <span>密码</span>
+            <input id="inputPassword" name="password" type="password" value="">
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="submitButton" class="buttonCommint">
+            <span style="text-shadow: #0D3349">Get Started</span>
+        </div>
+    </div>
 </div>
-
-<script>
-    var xmlrequest;
-    //完成XMLHttpRequest初始化
-    function creatXMLHttpRequest(){
-        if(window.XMLHttpRequest){ //判定兼容性
-            xmlrequest= new XMLHttpRequest(); //Dom2浏览器
-        }
-        else if(window.ActiveXObject){  //IE浏览器
-            try{
-                xmlrequest= new ActiveXObject("msxml2.XMLHTTP");
-            }catch(e){
-                try{
-                    xmlrequest= new ActiveXObject("Microsoft.XMLHTTP");
-                }catch(e){}
-            }
-        }
-    }
-    function change(url){//接受请求响应的URL
-        creatXMLHttpRequest();
-        xmlrequest.open("POST",url,true);//连接服务器
-        xmlrequest.setRequestHeader("content-Type","applicaion/x-www-form-urlencoded");
-        //设置请求头编码方式
-        xmlrequest.onreadystatechange = processResponse;
-
-        var username = window.document.getElementById("inputUsername");
-        var pw = window.document.getElementById("inputPassword");
-        console.log("xmlhttp: "+username.value);
-
-        xmlrequest.send("fasdfasd"+username.value+pw.value);  //发送请求
-    }
-    //定义处理响应的回调函数
-    function processResponse(){
-        if(xmlrequest.status ==4){
-            if(xmlrequest.status ==200){  //请求成功
-                var headers = xmlrequest.getAllResponseHeaders();
-                alert("响应头类型"+typeof headers+"\n"+headers);
-                document.getElementById('odiv').innerHTML = headers;   //请求成功后要做的事情
-            }
-            else{
-                window.alert("请求页面有异常");
-            }
-        }
-    }
-
-
-
-
-
-
-    var button = window.document.getElementById("submitButton");
-
-    button.onclick = function () {
-        console.log("submitButton onclick");
-        var res =  change("http://127.0.0.1:8080/simple_server2/");
-    };
-
-
-
-
-
-</script>
 
 
 

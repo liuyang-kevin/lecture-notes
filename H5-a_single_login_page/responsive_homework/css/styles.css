@@ -1,0 +1,92 @@
+/*@ 是CSS的一种选择符，它有很多应用场景的，
+最常用的使用场景是用来引用其他的CSS文件，是以@import开始的，*/
+@import url(./default.css);
+
+
+/*The screen size were defined by bootstrap*/
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media all {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+
+    .input-group{
+        margin: auto;
+        width: 25%;
+        text-align: center;
+    }
+
+    .editText{
+        margin: 15px;
+        text-align: center;
+        /* border: 2px solid #a1a1a1; */
+        padding: 10px 40px;
+        background: #dddddd66;
+        width: 350px;
+        height: 50px;
+        border-radius: 25px;
+        float: left;
+    }
+
+    .editText > span{
+        float: left;
+    }
+    .editText > input{
+        float: left;
+    }
+
+    .buttonCommint{
+        margin: 15px;
+        text-align: center;
+        /* border: 2px solid #a1a1a1; */
+        padding: 10px 40px;
+        background: #FF9800;
+        width: 350px;
+        height: 50px;
+        border-radius: 25px;
+        float: left;
+    }
+
+    .buttonCommint > span{
+    }
+
+
+    .wall-paper {
+        background-image: url("../../res/img_flowers.jpg");
+    }
+
+
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    .wall-paper {
+        background-image: url("../../res/img_smallflower.jpg");
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+    .wall-paper {
+        background-image: url("../../res/flowers.jpg");
+    }
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+    .wall-paper {
+        background-image: url("../../res/large.jpg");
+    }
+}
+
+
+
+
