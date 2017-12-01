@@ -9,7 +9,7 @@
 I use Webstrom IDE wrote it; some links could jump into file;
 ## CSS & HTML
 ### ./CSS-Positioning | position + float 
-[CSS Position属性详解](./CSS-Positioning/Readme.md)  
+* [CSS Position属性详解](./CSS-Positioning/Readme.md)  
 定位就靠它了（当然，还有grid）  
 You can learn `Position` how it work in `css` engine.
 
@@ -17,6 +17,7 @@ You can learn `Position` how it work in `css` engine.
 * [CSS -- display:grid;](./CSS-Grid/css_display_grid/Readme.md)  
 * [960栅格系统实现](./CSS-Grid/960_grid_system/Readme.md)
 * [wiki-历史-删格化布局](https://zh.wikipedia.org/zh-cn/%E6%A0%85%E6%A0%BC%E8%AE%BE%E8%AE%A1)
+* [bootstrap 栅格系统实现方式(3.x)](./bootstrap/bootstrap-grid/Readme.md)
 
 ### ./CSS-Positioning | Flex Layout
 [一篇blog](https://www.cnblogs.com/myzhibie/p/4318904.html)  
@@ -27,8 +28,9 @@ You can learn `Position` how it work in `css` engine.
 You can learn `Responsive layout`, `html`, `css` etc.
 
 ### ./bootstrap
-[bootstrap 源码学习与研究](./bootstrap/Readme.md)
-[栅格原理](https://www.cnblogs.com/suwings/p/6079178.html)
+* [bootstrap 源码学习与研究](./bootstrap/Readme.md)
+* [bootstrap 栅格系统实现方式(3.x)](./bootstrap/bootstrap-grid/Readme.md)
+* [bootstrap 栅格原理](https://www.cnblogs.com/suwings/p/6079178.html)
 
 ## JS | Node.js
 
