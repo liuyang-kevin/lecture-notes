@@ -41,12 +41,29 @@
         }
 
         .logo-group{
-            margin: 155px auto 55px auto;
+            margin: 120px auto 55px auto;
             width: 144px;
             height: 144px;
         }
 
-        
+        .foot-nav{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: silver;
+        }
+        .foot-nav > p {
+            margin: 0;
+            display: block;
+        }
+        .foot-nav > .left {
+            float: left;
+        }
+        .foot-nav > .right{
+            float: right;
+        }
 
     </style>
 
@@ -64,21 +81,28 @@
 
 
     <div id="input-group" class="input-group">
-        <div class="editText">
+        <div class="input-cell editText">
             <span>用户名</span>
             <input id="inputUsername" name="username" value="">
         </div>
-        <div class="editText">
+        <div class="input-cell editText">
             <span>密码</span>
             <input id="inputPassword" name="password" type="password" value="">
         </div>
 
         <div style="clear: both;"></div>
 
-        <div id="submitButton" class="buttonCommint">
+        <div id="submitButton" class="input-cell buttonCommint">
             <span style="text-shadow: #0D3349">Get Started</span>
         </div>
     </div>
+</div>
+
+
+<div class="foot-nav" >
+    <p class="left">login???</p>
+    <!--<div style="clear: both;"></div>-->
+    <p class="right">help me?? </p>
 </div>
 
 

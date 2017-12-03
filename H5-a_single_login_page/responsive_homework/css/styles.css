@@ -21,21 +21,31 @@
 
     .input-group{
         margin: auto;
-        width: 60%;
+        width: 360px;
         text-align: center;
     }
-
-    .editText{
-        margin: 15px;
+    .input-cell {
+        margin: 0 auto 15px auto;
         text-align: center;
-        /* border: 2px solid #a1a1a1; */
         padding: 10px 40px;
-        background: #dddddd66;
         width: 100%;
         height: 50px;
         border-radius: 25px;
         float: left;
     }
+
+    .buttonCommint{
+        background: #FF9800;
+    }
+
+    .editText{
+        background: #dddddd66;
+    }
+
+
+
+
+
 
     .editText > span{
         float: left;
@@ -44,17 +54,6 @@
         float: left;
     }
 
-    .buttonCommint{
-        margin: 15px;
-        text-align: center;
-        /* border: 2px solid #a1a1a1; */
-        padding: 10px 40px;
-        background: #FF9800;
-        width: 100%;
-        height: 50px;
-        border-radius: 25px;
-        float: left;
-    }
 
     .buttonCommint > span{
     }
@@ -73,7 +72,7 @@
     }
 
     .input-group{
-        width: 25%;
+        width: 450px;
     }
 }
 
@@ -84,7 +83,7 @@
     }
 
     .input-group{
-        width: 30%;
+        width: 450px;
     }
 }
 
@@ -95,7 +94,7 @@
     }
 
     .input-group{
-        width: 25%;
+        width: 450px;
     }
 }
 
