@@ -21,7 +21,7 @@
 
     .input-group{
         margin: auto;
-        width: 25%;
+        width: 60%;
         text-align: center;
     }
 
@@ -31,7 +31,7 @@
         /* border: 2px solid #a1a1a1; */
         padding: 10px 40px;
         background: #dddddd66;
-        width: 350px;
+        width: 100%;
         height: 50px;
         border-radius: 25px;
         float: left;
@@ -50,7 +50,7 @@
         /* border: 2px solid #a1a1a1; */
         padding: 10px 40px;
         background: #FF9800;
-        width: 350px;
+        width: 100%;
         height: 50px;
         border-radius: 25px;
         float: left;
@@ -71,6 +71,10 @@
     .wall-paper {
         background-image: url("../../res/img_smallflower.jpg");
     }
+
+    .input-group{
+        width: 25%;
+    }
 }
 
 /* 中等屏幕（桌面显示器，大于等于 992px） */
@@ -78,12 +82,20 @@
     .wall-paper {
         background-image: url("../../res/flowers.jpg");
     }
+
+    .input-group{
+        width: 30%;
+    }
 }
 
 /* 大屏幕（大桌面显示器，大于等于 1200px） */
 @media (min-width: 1200px) {
     .wall-paper {
         background-image: url("../../res/large.jpg");
+    }
+
+    .input-group{
+        width: 25%;
     }
 }
 
