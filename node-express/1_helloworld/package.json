@@ -1,0 +1,17 @@
+{
+  "name": "express_hello_world",
+  "version": "1.0.0",
+  "description": "hello world",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "kevin liu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
