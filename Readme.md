@@ -48,4 +48,22 @@ node的爬虫，抓取了一些js学习网站的习题；后续完善中
 ### ./node-express
 [Express服务器学习&使用](./node-node-express/Readme.md)
 
+
+
+## chrome-extension
+Doc:  
+[Office Website](https://developer.chrome.com/extensions)  
+[360的翻译文档](http://open.chrome.360.cn/extension_dev/overview.html)  
+Project:  
+[Github chrome-extension Projects](https://github.com/topics/chrome-extension)  
+[网站快照 full-page-screen-capture](https://github.com/mrcoles/full-page-screen-capture-chrome-extension)  
+[web-developer](https://github.com/chrispederick/web-developer)  
+[chrome-extension-skeleton](https://github.com/salsita/chrome-extension-skeleton)  
+[json-viewer](https://github.com/tulios/json-viewer)  
+[web-maker](https://github.com/chinchang/web-maker)  
+[qrcode](https://github.com/zhuweiyou/qrcode)  
+
+
+
+
 ## to be continue...
