@@ -11,5 +11,6 @@ server.on('connection',function(socket){
 server.listen(8080,function(){
     //给子进程发送TCP服务器(句柄)
     utils.logPInfo("server listen");
+    // child.send('utils', utils);
     child.send('server',server);
 });

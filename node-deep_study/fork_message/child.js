@@ -1,6 +1,16 @@
 var mUtils = require('../utils');
+
 var cp = require('child_process');
+var parentPID;
 process.on('message',function(m){
-    console.log(m);
+    if(m.pid){
+        parentPID = m.pid;
+    }else {
+        mUtils.logPInfo(m);
+        // console.log(m);
+    }
 });
-process.send({"message":"PID "+mUtils.getPID()+" say hello I am child."});
+process.send({
+    pid:process.pid,
+    message:" I am child. Hello"
+});
