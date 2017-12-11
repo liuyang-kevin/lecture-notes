@@ -55,6 +55,10 @@ node的爬虫，抓取了一些js学习网站的习题；后续完善中
 ### ./node-express
 [Express服务器学习&使用](./node-node-express/Readme.md)
 
+### ./node-deep_study
+[系统深入的学习一下Node.js](./node-deep_study/nodejs_modules.mmd)
+> 这里我使用了思维导图，自己下插件；[`IDEA Mind Map`](http://www.igormaznitsa.com/netbeans-mmd-plugin/)  
+> [Github:netbeans-mmd-plugin](https://github.com/raydac/netbeans-mmd-plugin)
 
 
 ## chrome-extension

@@ -102,7 +102,11 @@ module.exports = {
         //纳秒
         // process.hrtime()
         console.log(cNano(process.hrtime())+"|"+cPID(process.pid)+"|"+msg);
-    }
+    },
+    beautyChar: function (str,color) {
+        return color + str + reset;
+    },
+    wc: w16c
 };
 
 
