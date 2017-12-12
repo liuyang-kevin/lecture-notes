@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "double": "node ./bin/www_double_https",
+    "init":"npm install"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
