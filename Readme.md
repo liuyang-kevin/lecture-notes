@@ -26,6 +26,10 @@ You can learn `Position` how it work in `css` engine.
 ### ./CSS-Positioning | Flex Layout
 [一篇blog](https://www.cnblogs.com/myzhibie/p/4318904.html)  
 
+### ./CSS-
+|属性|简写|
+|---|:---|
+|background|background：color img_url repeat attachment position / size <br> `background:#f00 url(background.gif) no-repeat fixed 0 0/50px 50px;`|
 
 ### ./H5-a_single_login_page
 [单页面练习](./H5-a_single_login_page/Readme.md)
@@ -53,7 +57,7 @@ node的爬虫，抓取了一些js学习网站的习题；后续完善中
 > Simple Server, use it to understand GET And POST Method
 
 ### ./node-express
-[Express服务器学习&使用](./node-node-express/Readme.md)
+[Express服务器学习&使用](./node-express/Readme.md)
 
 ### ./node-deep_study
 [系统深入的学习一下Node.js](./node-deep_study/nodejs_modules.mmd)
