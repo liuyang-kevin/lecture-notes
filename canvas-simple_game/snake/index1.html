@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            position: absolute;
+            border: 1px solid #000;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400"></canvas>
+
+
+
+<script type="text/javascript">
+    function draw() {
+        // 计算一个格子(tile)的大小
+        var tw = 400/COLS;
+        var th = 400/ROWS;
+
+        ctx.lineWidth = 1;
+        ctx.fillStyle='rgba(255,255,255,1)';
+        ctx.fillRect(0, 0, 400, 400);
+        snake.snakeBody.forEach(function (body,index) {
+            ctx.fillStyle='rgba(0,100,100,0.2)';
+            ctx.fillRect(body.x*tw+OFFSET, body.y*th+OFFSET, tw+OFFSET, th+OFFSET);
+        });
+
+        for (var x=0; x < COLS; x++) {
+            for (var y=0; y < ROWS; y++) {
+//                ctx.fillStyle='rgba(255,255,255,1)';
+//                ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+
+
+                if(snake.snakeHead.x == x && snake.snakeHead.y == y){
+                    ctx.fillStyle='rgba(0,175,0,0.8)';
+                    ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+                }else if(fruit != null && fruit.x == x && fruit.y == y){
+                    ctx.fillStyle='rgba(0,100,175,0.8)';
+                    ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+                }
+
+                ctx.strokeStyle='rgba(175,175,175,0.3)';
+                ctx.strokeRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+            }
+        }
+    }
+
+    var lastT = new Date().getUTCMilliseconds();;
+    function update() {
+        var d = new Date();
+
+        var newT = d.getUTCMilliseconds();
+        frames++;
+        if (keystate[KEY_LEFT]) {
+            snake.direction = LEFT;
+        }
+        if (keystate[KEY_UP]) {
+            snake.direction = UP;
+        }
+        if (keystate[KEY_RIGHT]) {
+            snake.direction = RIGHT;
+        }
+        if (keystate[KEY_DOWN]) {
+            snake.direction = DOWN;
+        }
+
+
+
+        if (fruit == null){
+            fruit = resetFruit();
+        }
+
+
+        //每5帧更新状态
+        if (newT-lastT > 500){
+            switch(snake.direction){
+                case LEFT:
+                    snake.snakeHead.x--;
+                    if(snake.snakeHead.x<0){
+                        snake.snakeHead.x = 0;
+                    }
+                    break;
+                case UP:
+                    snake.snakeHead.y--;
+                    if(snake.snakeHead.y<0){
+                        snake.snakeHead.y = 0;
+                    }
+                    break;
+                case RIGHT:
+                    snake.snakeHead.x++;
+                    if(snake.snakeHead.x>COLS-1){
+                        snake.snakeHead.x = COLS-1;
+                    }
+                    break;
+                case DOWN:
+                    snake.snakeHead.y++;
+                    if(snake.snakeHead.y>ROWS-1){
+                        snake.snakeHead.y = ROWS-1;
+                    }
+                    break;
+            }
+
+            var body = {
+                x:snake.snakeHead.x,
+                y:snake.snakeHead.y,
+                desc:snake.snakeHead.x+":"+snake.snakeHead.y
+            };
+            snake.snakeBody.unshift(body);
+//            snake.snakeBody.push(body);
+
+
+            if(fruit != null && fruit.x == snake.snakeHead.x && fruit.y == snake.snakeHead.y){
+                snake.eatFruit++;
+                //被吃掉了
+                fruit = null;
+            }
+
+            lastT = newT;
+        }
+
+        while (snake.eatFruit < snake.snakeBody.length){
+            snake.snakeBody.pop();
+        }
+
+//        snake.direction = -1;
+    }
+
+
+
+
+    var frames = 0;
+    var
+            COLS = 20,
+            ROWS = 20,      // 设20 * 20 的网格(grid)
+
+            OFFSET = 0.5;
+
+    var LEFT  = 0;
+    var UP    = 1;
+    var RIGHT = 2;
+    var DOWN  = 3;
+
+
+    var snake = {
+        direction:-1,
+        snakeHead:{x:0,y:0},
+        snakeBody:[],
+        eatFruit:0
+    };
+//    var snake.snakeHead = {x:0,y:0};
+
+    var fruit = resetFruit();
+    
+    function resetFruit() {
+        return {x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)};
+    }
+
+    
+    
+    
+
+    //键盘按键的键码
+    var KEY_LEFT  = 37,
+            KEY_UP    = 38,
+            KEY_RIGHT = 39,
+            KEY_DOWN  = 40;
+
+    var canvas = document.getElementsByTagName('canvas');
+    var ctx = canvas[0].getContext("2d");
+
+
+
+    function loop() {
+        update();
+        draw();
+        window.requestAnimationFrame(loop, canvas);
+    }
+
+
+    function writeObj(arr){
+        var description = "";
+        arr.forEach(function (body,index) {
+            description+=index+" = "+body["desc"]+"\n";
+        });
+        console.log(description);
+    }
+
+    var snakeBody = [];
+
+
+
+
+    var keystate = {};
+    document.addEventListener("keydown", function(evt) {
+//        console.log("down:"+evt.keyCode);
+        keystate[evt.keyCode]=true;
+    });
+    document.addEventListener("keyup", function(evt) {
+//        console.log("up:"+evt.keyCode);
+        delete keystate[evt.keyCode];
+    });
+
+
+    loop();
+</script>
+</body>
+</html>

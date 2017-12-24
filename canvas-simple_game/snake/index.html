@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            position: absolute;
+            border: 1px solid #000;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400"></canvas>
+
+
+
+<script type="text/javascript">
+    function draw() {
+        // 计算一个格子(tile)的大小
+        var tw = 400/COLS;
+        var th = 400/ROWS;
+
+        ctx.lineWidth = 1;
+        ctx.fillStyle='rgba(255,255,255,1)';
+        ctx.fillRect(0, 0, 400, 400);
+        snakeBody.forEach(function (body,index) {
+            ctx.fillStyle='rgba(0,100,100,0.2)';
+            ctx.fillRect(body.x*tw+OFFSET, body.y*th+OFFSET, tw+OFFSET, th+OFFSET);
+        });
+
+        for (var x=0; x < COLS; x++) {
+            for (var y=0; y < ROWS; y++) {
+//                ctx.fillStyle='rgba(255,255,255,1)';
+//                ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+
+
+                if(block.x == x && block.y == y){
+                    ctx.fillStyle='rgba(0,175,0,0.8)';
+                    ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+                }else if(fruit != null && fruit.x == x && fruit.y == y){
+                    ctx.fillStyle='rgba(0,100,175,0.8)';
+                    ctx.fillRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+                }
+
+                ctx.strokeStyle='rgba(175,175,175,0.3)';
+                ctx.strokeRect(x*tw+OFFSET, y*th+OFFSET, tw+OFFSET, th+OFFSET);
+            }
+        }
+    }
+
+    function update() {
+        frames++;
+        if (fruit == null){
+            fruit = resetFruit();
+        }
+
+
+        //每5帧更新状态
+        if (frames%5 === 0){
+//            block.x += 1;
+//            if(block.x>COLS){
+//                block.x = 0;
+//            }
+
+            if(fruit != null && fruit.x == block.x && fruit.y == block.y){
+                //被吃掉了
+                fruit = null;
+            }
+        }
+    }
+
+
+
+
+    var frames = 0;
+    var
+            COLS = 20,
+            ROWS = 20,      // 设20 * 20 的网格(grid)
+
+            OFFSET = 0.5;
+
+    var block = {x:0,y:0};
+
+    var fruit = resetFruit();
+    
+    function resetFruit() {
+        return {x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)};
+    }
+
+    
+    
+    
+
+    //键盘按键的键码
+    var KEY_LEFT  = 37,
+            KEY_UP    = 38,
+            KEY_RIGHT = 39,
+            KEY_DOWN  = 40;
+
+    var canvas = document.getElementsByTagName('canvas');
+    var ctx = canvas[0].getContext("2d");
+
+
+
+    function loop() {
+        update();
+        draw();
+        window.requestAnimationFrame(loop, canvas);
+    }
+
+
+    function writeObj(arr){
+        var description = "";
+        arr.forEach(function (body,index) {
+            description+=index+" = "+body["desc"]+"\n";
+        });
+        console.log(description);
+    }
+
+    var snakeBody = [];
+    var keystate = {};
+    document.addEventListener("keydown", function(evt) {
+        console.log("down:"+evt.keyCode);
+        var body = {x:block.x,y:block.y,desc:block.x+":"+block.y};
+        snakeBody.push(body);
+//        console.log(snakeBody);
+        writeObj(snakeBody);
+
+        switch(evt.keyCode){
+            case KEY_LEFT:
+                block.x--;
+                if(block.x<0){
+                    block.x = 0;
+                }
+                break;
+            case KEY_UP:
+                block.y--;
+                if(block.y<0){
+                    block.y = 0;
+                }
+                break;
+            case KEY_RIGHT:
+                block.x++;
+                if(block.x>COLS-1){
+                    block.x = COLS-1;
+                }
+                break;
+            case KEY_DOWN:
+                block.y++;
+                if(block.y>ROWS-1){
+                    block.y = ROWS-1;
+                }
+                break;
+        }
+    });
+    document.addEventListener("keyup", function(evt) {
+        console.log("up:"+evt.keyCode);
+    });
+
+
+    loop();
+</script>
+</body>
+</html>

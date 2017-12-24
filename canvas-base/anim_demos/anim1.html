@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="canvas" width="800" height="200"></canvas>
+<script type="text/javascript">
+
+    var img = new Image();
+    // 方向 速度 资源.
+//    img.src = '../res/Canvas_earth.png';
+    img.src = '../res/Capitan_Meadows,_Yosemite_National_Park.jpg';
+    var CanvasXSize = 800;
+    var CanvasYSize = 200;
+    var speed = 30; //lower is faster
+    var scale = 1.05;
+    var y = -4.5; //vertical offset
+
+    // Main program
+
+    var dx = 0.75;
+    var imgW;
+    var imgH;
+    var x = 0;
+    var clearX;
+    var clearY;
+    var ctx;
+
+    img.onload = function() {
+        imgW = img.width*scale;
+        imgH = img.height*scale;
+        if (imgW > CanvasXSize) { x = CanvasXSize-imgW; } // image larger than canvas
+        if (imgW > CanvasXSize) { clearX = imgW; } // image larger than canvas
+        else { clearX = CanvasXSize; }
+        if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
+        else { clearY = CanvasYSize; }
+        ctx = document.getElementById('canvas').getContext('2d');
+        return setInterval(draw, speed);
+    }
+
+    function draw() {
+        //清画布
+        ctx.clearRect(0,0,clearX,clearY);
+//        //If image is <= Canvas Size
+//        if (imgW <= CanvasXSize) {
+//            if (x > (CanvasXSize)) { x = 0; }
+//            if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-CanvasXSize+1,y,imgW,imgH); }
+//        }
+//        //If image is > Canvas Size
+//        else {
+            if (x > (CanvasXSize)) { x = CanvasXSize-imgW; }
+            if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-imgW+1,y,imgW,imgH); }
+//        }
+
+
+        ctx.drawImage(img,x,y,imgW,imgH);
+        //增加偏移量
+        x += dx;
+    }
+
+</script>
+</body>
+</html>

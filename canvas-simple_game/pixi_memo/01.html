@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记忆力游戏(memo)</title>
+    <!-- 导入pixi js，CSS清除HTML body默认样式 -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="./pixi.dev.js"></script>
+</head>
+<body>
+
+<!-- 代码，先实现PIXI的基本组件 stage renderer 等等 -->
+<script type="text/javascript">
+    var stage = new PIXI.Stage(0x888888);
+    var renderer = PIXI.autoDetectRenderer(640,480);
+    var gameContainer = new PIXI.DisplayObjectContainer();
+
+    stage.addChild(gameContainer);
+
+
+    document.body.appendChild(renderer.view);
+</script>
+</body>
+</html>

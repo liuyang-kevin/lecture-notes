@@ -65,6 +65,19 @@ node的爬虫，抓取了一些js学习网站的习题；后续完善中
 > [Github:netbeans-mmd-plugin](https://github.com/raydac/netbeans-mmd-plugin)
 
 
+## H5 - Canvas
+
+### Animation
+[动画步骤](./canvas-base/anim_demos/Readme.md)
+[全景卷轴](./canvas-base/anim_demos/anim1.html)
+[钟表](./canvas-base/anim_demos/clock.html)
+[地月日系统](./canvas-base/anim_demos/sunsys.html)
+[setInterval](./canvas-base/anim_demos/setInterval.html)
+
+### Simple Games
+[贪吃蛇](./canvas-simple_game/snake/Readme.md)
+[pixi 记忆力游戏](./canvas-simple_game/pixi_memo/index.html)
+
 ## chrome-extension
 Doc:  
 [Office Website](https://developer.chrome.com/extensions)  
