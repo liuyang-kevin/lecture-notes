@@ -35,3 +35,6 @@
 ---
 
 #### 注意查看版本比较，我也许会提交功能增项
+![](./res/gitupdate1.jpg)
+双击：
+![](./res/gitupdate2.jpg)
