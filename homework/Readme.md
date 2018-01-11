@@ -4,7 +4,7 @@
 #### Most useful
 
 
-#### That things make you understand everything:
+#### That things insignificance. but make you understand everything:
 |type|project|resource|
 |:---|:---|:---|
 |`V8 Engine`|---|[wiki](https://github.com/v8/v8/wiki/Introduction)|
@@ -15,7 +15,7 @@
 #### 最有用的
 
 
-#### 解惑
+#### 没有什么用的事，但可以解惑
 |type|project|resource|
 |:---|:---|:---|
 |js的`v8引擎` `V8 Engine`|---|中文的没找到，找些博客看就好|
