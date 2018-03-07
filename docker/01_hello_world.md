@@ -39,3 +39,31 @@ Digest: sha256:4771d09578c7c6a65299e110b3ee1c0a2592f5ea2618d23e4ffe7a4cab1ce5de
 我先注册了docker账户；貌似公有库不需要登陆，反而没法 `pull` ，所以退出登陆，CLI可以 `docker logout`  
 2. 下到哪里去了？  
 `$ docker images` 命令； nginx是作为镜像下载到docker中的；
+3. [Where are Docker images stored on the host machine?](https://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine)
+```text
+The contents of the /var/lib/docker directory vary depending on the driver Docker is using for storage.
+
+By default this will be aufs but can fall back to overlay, overlay2, btrfs, devicemapper or zfs depending on your kernel support. In most places this will be aufs but the RedHats went with  devicemapper.
+
+You can manually set the storage driver with the -s or --storage-driver= option to the Docker daemon.
+
+/var/lib/docker/{driver-name} will contain the driver specific storage for contents of the images.
+/var/lib/docker/graph/<id> now only contains metadata about the image, in the json and  layersize files.
+In the case of aufs:
+
+/var/lib/docker/aufs/diff/<id> has the file contents of the images.
+/var/lib/docker/repositories-aufs is a JSON file containing local image information. This can be viewed with the command docker images.
+In the case of devicemapper:
+
+/var/lib/docker/devicemapper/devicemapper/data stores the images
+/var/lib/docker/devicemapper/devicemapper/metadata the metadata
+Note these files are thin provisioned "sparse" files so aren't as big as they seem.
+```
+
+# 二、启动nginx容器  
+运行命令：`docker run -p 8080:80 --name nginx_web -it nginx /bin/bash`  
+该命令是将容器的nginx的80端口映射成系统8080端口，并进入容器命令界面  
+启动nginx：nginx  
+退出容器：Ctrl+P+Q  
+
+
