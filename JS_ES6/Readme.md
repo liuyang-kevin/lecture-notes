@@ -25,4 +25,4 @@ function animal(type = 'cat'){
 animal()
 ```
 * `import` `export` 高级语言的导包关键字能用了。原来用 `require('xx.js')`
-* 还能单独导入部分变量、对象 `import { type } from './content' `
+* 还能单独导入部分变量、对象 `import { type, abc, ddd } from './content' `

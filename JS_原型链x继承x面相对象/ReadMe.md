@@ -80,6 +80,9 @@ console.dir(foo3);
 Q: 继承？  
 A: `Foo2.prototype = new Foo1();` 就是继承  
 
+`class foo2 extend foo1 `
+`{foo2} + {foo1}`
+
 # 面相对象 & 继承
 
 > 我胡说几句:  
