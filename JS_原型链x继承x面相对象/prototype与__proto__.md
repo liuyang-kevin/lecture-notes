@@ -1,5 +1,5 @@
 1. `__proto__`是每个对象都有的一个属性，
-2. `prototype`是函数才会有的属性!!! 
+2. `prototype`是函数才会有的属性
 3. 使用`Object.getPrototypeOf()`代替`__proto__`
 
 # prototype
