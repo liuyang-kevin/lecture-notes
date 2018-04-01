@@ -7,6 +7,7 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 docker rmi $(docker images -q)  // remove all images
 
 docker exec -it 966832a8f582 /bin/bash    //进容器后台
+docker run -t -i image_name /bin/bash     //根据镜像启动容器，进入bash
 
 
 docker start xxxx
