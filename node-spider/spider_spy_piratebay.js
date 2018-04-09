@@ -6,7 +6,8 @@ const socks5 = require('socks5-https-client');
 const Agent = require('socks5-https-client/lib/Agent');
 
 let websiteUrl = "https://savannah-template.blogspot.jp/";
-let hostname = "savannah-template.blogspot.jp";
+const hostname = 'thepiratebay.org';
+const path = '/top/48h200';
 let savePath = websiteUrl
                 .replace(/https:\/\/|http:\/\//gm,"")
                 .replace(/\//gm,"")
@@ -19,7 +20,7 @@ function main() {
 
     let proxyOptions = {
         hostname: hostname,
-        path: '/',
+        path: path,
         socksHost: '127.0.0.1',
         socksPort: 2333,
         rejectUnauthorized: false
@@ -62,11 +63,17 @@ function cb4Request(res) {
     });
     //监听end事件，如果整个网页内容的html都获取完毕，就执行回调函数
     res.on('end', function () {
-        console.log(html);
-        // 2. save file
-
-        // var $ = cheerio.load(html); //采用cheerio模块解析html
-        // callback.on($,$(node_feature))
+      const $ = cheerio.load(html); // 采用cheerio模块解析html
+      const list = [];
+      $('.alt').each((i, element) => {
+        console.log($(element).find('td > div.detName').next().attr('href'));
+        console.log('----------');
+        const info = {};
+        info.title = $(element).find('td > div.detName > a').text();
+        info.magnet = $(element).find('td > div.detName').next().attr('href');
+        list.push(info);
+      });
+      // callback(list);
     });
 }
 

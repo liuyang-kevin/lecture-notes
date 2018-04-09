@@ -8,9 +8,23 @@ docker rmi $(docker images -q)  // remove all images
 
 docker exec -it 966832a8f582 /bin/bash    //进容器后台
 docker run -t -i image_name /bin/bash     //根据镜像启动容器，进入bash
+-p 5000:5000               //绑定特定端口号
+-v /webapp training/webapp // -v 挂载 本机文件夹到容器
 
+# 把一个宿主机上的目录挂载到镜像里。
+docker run -it -v /home/dock/Downloads:/usr/Downloads ubuntu64 /bin/bash
 
 docker start xxxx
+
+
+# 网络管理
+docker run -P：随机分配端口号
+docker run -p 5000:5000：绑定特定端口号（主机的所有网络接口的5000端口均绑定容器的5000端口）
+docker run -p 127.0.0.1:5000:5000：绑定主机的特定接口的端口号
+docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py：绑定udp端口号
+docker port<CONTAINER_ID> 5000：查看容器的5000端口对应本地机器的IP和端口号
+
+
 
 
 docker attach     //命令-登录一个已经在执行的容器 (link is external)
