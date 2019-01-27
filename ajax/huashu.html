@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+token<input id="token" ><br>
+token_key<input id="token_key" >  <br><br><br><br>
+
+
+<textarea id="huashu">
+</textarea>
+
+<input id="sep" value="，">topic_id<input id="topic_id" value="">
+
+
+<button id="btnSplit">分割字符串</button>
+
+<button id="btnAjax">导入</button>
+
+<div>
+<ul id="list">
+
+</ul>
+</div>
+
+<script>
+  var token = "";
+  var token_key = "";
+  var inputlist = [];
+
+  document.getElementById('btnSplit').onclick = function () {
+    var strText = document.getElementById('huashu').value;
+    var sep = document.getElementById('sep').value;
+    var arr = strText.trim().split(sep);
+    var ul = document.getElementById('list');
+    console.log(arr);
+    ul.innerHTML = "";
+    for (var i=0;i<arr.length;i++) {
+      if(arr[i].trim()!==""){
+        inputlist.push(arr[i].trim());
+        ul.innerHTML+="<li>"+arr[i]+"</li>";
+      }
+    }
+  };
+
+
+  document.getElementById('btnAjax').onclick = function () {
+    console.log("ajax")
+    // console.log(inputlist[0]);
+    // send1(inputlist[0]);
+    token = document.getElementById('token').value;
+    token_key = document.getElementById('token_key').value;
+
+    for (var i=0;i<inputlist.length;i++) {
+      console.log(inputlist[i]);
+      send1(inputlist[i]);
+    }
+  };
+
+
+  function send1(topic) {
+
+
+    var xhr = ajaxFunction();
+
+    xhr.onreadystatechange = function(){
+      // alert(xhr.readyState);
+      //alert(xhr.status);
+      if(xhr.readyState==4){
+        if(xhr.status==200||xhr.status==304){
+          var data = JSON.parse(xhr.responseText);
+          console.dir(data.data.id);
+          send2(data.data.id);
+        }
+      }
+    };
+
+    /*
+     * 3    浏览器与服务器建立连接
+     *
+     * xhr.open(method, url, asynch);
+     *         * 与服务器建立连接使用
+     *         * method：请求类型，类似 “GET”或”POST”的字符串。
+     *         * url：路径字符串，指向你所请求的服务器上的那个文件。请求路径
+     *         * asynch：表示请求是否要异步传输，默认值为true(异步)。
+     */
+    xhr.open("POST","http://47.94.214.130:8080/corpus-api/data/corpus/save.do",false);
+
+    //如果是POST请求方式，设置请求首部信息
+    xhr.setRequestHeader("Accept","application/json, text/plain, */*");
+    xhr.setRequestHeader("Authorization","Token e7ab15de0f09b3fb0aa98ac50b9bb493b1cb3c95");
+    xhr.setRequestHeader("Content-type","application/json;charset=UTF-8");
+
+
+
+    var datajjj = {
+      "token_key":token_key,
+      "token":token,
+      "sentence":topic,
+      "flag":1
+    };
+    /*
+     * 4    浏览器向服务器发送请求
+     *
+     *     send()方法：
+     *         * 如果浏览器请求的类型为GET类型时，通过send()方法发送请求数据，服务器接收不到
+     *         * 如果浏览器请求的类型为POST类型时，通过send()方法发送请求数据，服务器可以接收
+     */
+    xhr.send(JSON.stringify(datajjj));        //xhr.send(null);
+  }
+
+  function send2(id) {
+    var xhr = ajaxFunction();
+
+    xhr.onreadystatechange = function(){
+      // alert(xhr.readyState);
+      //alert(xhr.status);
+      if(xhr.readyState==4){
+        if(xhr.status==200||xhr.status==304){
+          var data = xhr.responseText;
+          console.log(data);
+        }
+      }
+    };
+
+    /*
+     * 3    浏览器与服务器建立连接
+     *
+     * xhr.open(method, url, asynch);
+     *         * 与服务器建立连接使用
+     *         * method：请求类型，类似 “GET”或”POST”的字符串。
+     *         * url：路径字符串，指向你所请求的服务器上的那个文件。请求路径
+     *         * asynch：表示请求是否要异步传输，默认值为true(异步)。
+     */
+    xhr.open("POST","http://47.94.214.130:8080/corpus-api/data/corpus/move.do",false);
+
+    //如果是POST请求方式，设置请求首部信息
+    xhr.setRequestHeader("Accept","application/json, text/plain, */*");
+    xhr.setRequestHeader("Authorization","Token e7ab15de0f09b3fb0aa98ac50b9bb493b1cb3c95");
+    xhr.setRequestHeader("Content-type","application/json;charset=UTF-8");
+
+
+
+    var data2 = {
+      "token_key":token_key,
+      "token":token,
+      "id":id,
+      "topic_id":document.getElementById("topic_id").value
+    };
+    /*
+     * 4    浏览器向服务器发送请求
+     *
+     *     send()方法：
+     *         * 如果浏览器请求的类型为GET类型时，通过send()方法发送请求数据，服务器接收不到
+     *         * 如果浏览器请求的类型为POST类型时，通过send()方法发送请求数据，服务器可以接收
+     */
+    xhr.send(JSON.stringify(data2));        //xhr.send(null);
+
+
+
+  }
+
+
+  function ajaxFunction(){
+    var xmlHttp;
+    try{ // Firefox, Opera 8.0+, Safari
+      xmlHttp=new XMLHttpRequest();
+    }
+    catch (e){
+      try{// Internet Explorer
+        xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+      }
+      catch (e){
+        try{
+          xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e){}
+      }
+    }
+    return xmlHttp;
+  }
+</script>
+</body>
+</html>

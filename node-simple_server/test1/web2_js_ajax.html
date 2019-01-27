@@ -126,20 +126,7 @@
 
         xmlrequest.send("普通提交:用户名->"+dom_div_username.value+"|密码->"+dom_div_password.value);  //发送请求，普通发送；
     }
-    // onreadystatechange 是一个事件句柄。它的值 (state_Change) 是一个函数的名称，
-    // 当 XMLHttpRequest 对象的状态发生改变时，会触发此函数。
-    // 状态从 0 (uninitialized) 到 4 (complete) 进行变化。仅在状态为 4 时，我们才执行代码。
 
-
-        //为什么使用 Async=true ？
-            //我们的实例在 open() 的第三个参数中使用了 "true"。
-            //该参数规定请求是否异步处理。
-            //True 表示脚本会在 send() 方法之后继续执行，而不等待来自服务器的响应。
-            //onreadystatechange 事件使代码复杂化了。但是这是在没有得到服务器响应的情况下，防止代码停止的最安全的方法。
-            //通过把该参数设置为 "false"，可以省去额外的 onreadystatechange 代码。如果在请求失败时是否执行其余的代码无关紧要，那么可以使用这个参数。
-
-    //----------------------------------------------------------------------------------------------------------------
-    //定义处理响应的回调函数
     function processResponse(){
         console.log("响应的回调了");
         if(xmlrequest.readyState === 4){
@@ -153,23 +140,12 @@
             }
         }
     }
-
-
-
-
-
-
     var button = window.document.getElementById("submitButton");
 
     button.onclick = function () {
         console.log("submitButton onclick");
         var res =  change("http://127.0.0.1:8080/simple_server2_handle_ajax/");
     };
-
-
-
-
-
 </script>
 
 

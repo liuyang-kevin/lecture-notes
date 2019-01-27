@@ -137,7 +137,7 @@ var server = http.createServer(function (request, response) {
                     response.writeHead(500, {
                         'Content-Type': 'text/plain'
                     });
-                    response.end(err);
+                    response.end(err.toString());
                 } else {
                     var contentType = mine[ext] || "text/plain";
                     response.writeHead(200, {
@@ -155,3 +155,4 @@ console.log("Server runing at port: " + PORT + ".");
 console.log('Server running at http://%s:%s | but here no default index.html optimize. \nYou could exercise fix this "bug".', "127.0.0.1", PORT);
 console.log('Server running at http://%s:%s/web1_form_action.html | form commit GET,POST Method.', "127.0.0.1", PORT);
 console.log('Server running at http://%s:%s/web2_js_ajax.html | ajax commit Get,POST Method.', "127.0.0.1", PORT);
+console.log('Server running at http://%s:%s/web2_jq_ajax.html | ajax commit Get,POST Method.', "127.0.0.1", PORT);
