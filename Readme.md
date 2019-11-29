@@ -1,16 +1,15 @@
 # 本项目为何存在？| What's this?
-* 这个项目算是我用来上课使用的课件、大纲类的东西；
-* 项目有一些，代码有一些，
+这个项目算是我用来将前端课使用的课件、大纲类的东西；项目有一些，代码有一些；
 
-* This Git is not A Project something, I use it to teach students; it's like a lecture notes.
-* it have some demo, code or something;
+课程讲的虽是前端，但内容不单局限于前端；希望可以从浅入深的完成对计算机、开发的学习与认识
 
-# Project List
-I use Webstrom IDE wrote it; some links could jump into file;
-## UI & UE
+# 结构
+* 使用`vs code`查看即可，工作区增加了自动保存配置
+* 新内容采用了编号文件夹的形式
+* `src`文件夹中是项目样例
 
-
-
+----
+# 新老交替中，老版碎文，没啥调理
 ## CSS & HTML
 ### ./CSS-Positioning | position + float 
 * [CSS Position属性详解](./CSS-Positioning/Readme.md)  
